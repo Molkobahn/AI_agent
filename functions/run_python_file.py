@@ -18,15 +18,15 @@ def run_python_file(working_directory, file_path):
     
     try:
         result = subprocess.run(["python", abs_file_path], capture_output=True, text=True, timeout=30, cwd=abs_working_directory)
-        STDOUT = f'STDOUT: {result.stdout}\n'
-        STDERR = f'STDERR: {result.stderr}\n'
+        STDOUT = f'STDOUT: {result.stdout}'
+        STDERR = f'STDERR: {result.stderr}'
         output = STDOUT + STDERR
 
         if result.returncode != 0:
             output += f'Process exited withcode {result.returncode}'
 
         if STDOUT == "" and STDERR == "":
-            return f'No output produced\n'
+            return f'No output produced'
 
         return output
     except Exception as e:

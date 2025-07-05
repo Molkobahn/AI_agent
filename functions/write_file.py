@@ -9,7 +9,7 @@ def write_file(working_directory, file_path, content):
     
     if not os.path.exists(full_path):
         try:
-            os.makedirs(full_path)
+            os.makedirs(os.path.dirname(os.path.abspath(full_path)), exist_ok=True)
         except Exception as e:
             return f'Error creating file "{file_path}": {e}'
     
@@ -22,7 +22,7 @@ def write_file(working_directory, file_path, content):
     
 schema_write_file = types.FunctionDeclaration(
     name="write_file",
-    description="Write provided content to file at given path. Constrained to the working directory.",
+    description="Write provided content to file in the working directory. Create file if it doesn't exist.",
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={

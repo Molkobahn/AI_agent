@@ -18,7 +18,7 @@ def get_files_info(working_directory, directory=None):
         if os.path.isdir(file_path):
             res += f"- {file}: file_size=92, is_dir={os.path.isdir(file_path)}"
         elif os.path.isfile(file_path):
-            res += f"- {file}: file_size={os.path.getsize(file_path)}, is_dir={os.path.isdir(file_path)}\n"
+            res += f"- {file}: file_size={os.path.getsize(file_path)}, is_dir={os.path.isdir(file_path)}"
     return res
 
 schema_get_files_info = types.FunctionDeclaration(
